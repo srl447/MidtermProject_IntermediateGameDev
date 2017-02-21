@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
 
         //Adjusts movement direction to be relative to the character direction not the unity world
         //This is complex linear algebra that I'm not 100% sure on, but I kinda know
-        if (angle > 0)
+        if (angle >= 0)
         {
             relativeHorizontal =  horizontal * Mathf.Sin(angle) - vertical * Mathf.Cos(angle); // sets horizontal vector component
             relativeVertical  =  horizontal * Mathf.Cos(angle) + vertical * Mathf.Sin(angle); //sets vertical vector component
