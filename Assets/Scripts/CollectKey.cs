@@ -5,8 +5,8 @@ using UnityEngine;
 public class CollectKey : MonoBehaviour
 {
 
-    Collider key;
-    public LayerMask keyMask;
+    Collider key; //Collider to assign to keys later
+    public LayerMask keyMask; // Allows for the ray to only detect keys
     // Use this for initialization
     void Start ()
     {
@@ -22,14 +22,13 @@ public class CollectKey : MonoBehaviour
 
         Debug.DrawRay(ray.origin, ray.direction * 5f, Color.yellow); // draws raycast in the editor
 
-        if (Physics.Raycast(ray, out rayHit, 5f, keyMask))
+        if (Physics.Raycast(ray, out rayHit, 5f, keyMask)) //stores data in rayHit if a key is within 5 units of it
         {
-            key = rayHit.collider;
-            if (Input.GetMouseButtonDown (0))
+            key = rayHit.collider; //stores the key's collider in the collider variable
+            if (Input.GetMouseButtonDown (0)) //checks to see input from mouse button 1
             {
-                Debug.Log("it works");
-                Destroy(key.gameObject);
-                GameManager.hasKeyOne = true;
+                Destroy(key.gameObject); //removes the key from the world
+                GameManager.hasKeyOne = true; //tells the game key one has been picked up
             }
             
                
