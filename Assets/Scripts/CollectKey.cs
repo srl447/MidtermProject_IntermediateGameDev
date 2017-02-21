@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollectKey : MonoBehaviour
 {
-
+    public static bool hasKey;
 	// Use this for initialization
 	void Start ()
     {
@@ -22,6 +22,7 @@ public class CollectKey : MonoBehaviour
         if (coll.gameObject.tag == "Player")
         {
             Destroy(gameObject);
+            hasKey = true;
         }
     }
 }
