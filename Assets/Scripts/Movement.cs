@@ -8,9 +8,9 @@ public class Movement : MonoBehaviour
     Vector3 movementDirection; //direction for where the character moves
     public float speed = 1; //how fast the character moves
     public float camSpeed = 1; //camera speed for horizontal
-    public float relativeHorizontal; //horizontal movement relative to the player
-    public float relativeVertical;//vertical movement relative to the player
-    public float angle;//angle the player is at in radians
+    float relativeHorizontal; //horizontal movement relative to the player
+    float relativeVertical;//vertical movement relative to the player
+    float angle;//angle the player is at in radians
 	void Start ()
     {
         characterControl = GetComponent<CharacterController>(); //assigns the character controller
