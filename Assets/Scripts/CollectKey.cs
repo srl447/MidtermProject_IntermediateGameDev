@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CollectKey : MonoBehaviour
 {
-    public static bool hasKey;
-	// Use this for initialization
-	void Start ()
+
+    Collider key;
+    public LayerMask keyMask;
+    // Use this for initialization
+    void Start ()
     {
 		
 	}
@@ -14,15 +16,23 @@ public class CollectKey : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward); // creates a ray
 
-    void OnTriggerEnter (Collider coll)
-    {
-        if (coll.gameObject.tag == "Player")
+        RaycastHit rayHit = new RaycastHit(); //creates variable to store ray data
+
+        Debug.DrawRay(ray.origin, ray.direction * 5f, Color.yellow); // draws raycast in the editor
+
+        if (Physics.Raycast(ray, out rayHit, 5f, keyMask))
         {
-            Destroy(gameObject);
-            hasKey = true;
+            key = rayHit.collider;
+            if (Input.GetMouseButtonDown (0))
+            {
+                Debug.Log("it works");
+                Destroy(key.gameObject);
+                GameManager.hasKeyOne = true;
+            }
+            
+               
         }
     }
 }

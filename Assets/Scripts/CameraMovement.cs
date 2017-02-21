@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    float verticalTurn; //vertical camera movement
+    float verticalTurn = 0; //vertical camera movement
     //float horizontalTurn; //horizontal camera movement
     public float cameraSpeed = 1; //how fast the camera turns
 	// Use this for initialization
@@ -16,10 +16,13 @@ public class CameraMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        Cursor.visible = false; //turns off the mouse visibility
+        //Cursor.lockState = CursorLockMode.Locked; not sure what this line would do, probably keeps mouse cursor in place?
         //float mouseX = Input.GetAxis("Mouse X"); //grabs horizontal mouse inputs
-        float mouseY = Input.GetAxis("Mouse Y");//grabs vertical mouseinputs
-        verticalTurn = -mouseY * Time.deltaTime * cameraSpeed; //assigns value to verticalTurn
+        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * cameraSpeed;//grabs vertical mouseinputs
+        verticalTurn -= mouseY; //assigns value to verticalTurn
         //horizontalTurn = mouseX * Time.deltaTime * cameraSpeed; //assigns value to verticalTurn
-        transform.Rotate(verticalTurn, 0f, 0f); //rotates camera
+        verticalTurn = Mathf.Clamp(verticalTurn, -80f, 80f);
+        transform.eulerAngles = new Vector3(verticalTurn, transform.eulerAngles.y, 0f); //rotates camera
     }
 }
