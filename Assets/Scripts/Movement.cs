@@ -38,10 +38,9 @@ public class Movement : MonoBehaviour
             relativeHorizontal = horizontal * Mathf.Sin(angle) + vertical * Mathf.Cos(angle);
             relativeVertical = - horizontal * Mathf.Cos(angle) + vertical * Mathf.Sin(angle);
         }
-        movementDirection = new Vector3(relativeHorizontal, 0f, relativeVertical); //assigns inputs in a vector
+        movementDirection = new Vector3(relativeHorizontal, -1f, relativeVertical); //assigns inputs in a vector
 
         characterControl.Move(movementDirection); //uses the character controller to move
-
         // rotates the figure to simulate the rotated camera while tracking rotation in the transform
         transform.Rotate(0f, mouseX * Time.deltaTime * camSpeed, 0f);
         
