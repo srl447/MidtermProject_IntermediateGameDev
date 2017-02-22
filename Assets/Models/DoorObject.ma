@@ -1,6 +1,6 @@
 //Maya ASCII 2017 scene
 //Name: DoorObject.ma
-//Last modified: Tue, Feb 21, 2017 06:59:02 PM
+//Last modified: Tue, Feb 21, 2017 07:06:29 PM
 //Codeset: 1252
 requires maya "2017";
 currentUnit -l centimeter -a degree -t film;
@@ -13,13 +13,13 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "7761C399-4593-E2F6-933B-ECAD8E555DB5";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -0.9109645034760856 7.3122313427290182 13.048592330841821 ;
-	setAttr ".r" -type "double3" -6.338352729620814 -3.3999999999987938 -1.2445948735894013e-016 ;
+	setAttr ".t" -type "double3" -8.8540883496696843 13.547297967856739 31.851093588550331 ;
+	setAttr ".r" -type "double3" -12.938352729620917 -14.99999999999892 2.0579703138818383e-016 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "1690BF37-4D1B-2A87-6799-1BA8F2074A27";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 14.04073086257951;
+	setAttr ".coi" 34.770296051086277;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -78,6 +78,8 @@ createNode camera -s -n "sideShape" -p "side";
 createNode transform -n "pCube1";
 	rename -uid "AFEE79A4-452F-8981-E3BD-0995D18B02DD";
 	setAttr ".t" -type "double3" -2.3517642745350038 4.6050683235287018 -0.15762931511116918 ;
+	setAttr ".rp" -type "double3" -2.670745849609375 0 0.51359856128692627 ;
+	setAttr ".sp" -type "double3" -2.670745849609375 0 0.51359856128692627 ;
 createNode mesh -n "pCubeShape1" -p "pCube1";
 	rename -uid "B6B74A69-4953-2D98-818A-77A8694C4965";
 	setAttr -k off ".v";
@@ -94,6 +96,9 @@ createNode transform -n "pSphere1";
 	rename -uid "DA8D9817-49FF-5FF3-72B4-9B940478ACF4";
 	setAttr ".t" -type "double3" -0.087742503386419854 5.364706080416358 0.50032768715921727 ;
 	setAttr ".s" -type "double3" 0.51272351840431629 0.51272351840431629 0.41849541514005878 ;
+	setAttr ".rp" -type "double3" -4.9347676207579605 -0.75963775688765645 -0.14435844098346018 ;
+	setAttr ".sp" -type "double3" -9.6246172520343993 -1.4815738494925679 -0.34494629035576774 ;
+	setAttr ".spt" -type "double3" 4.6898496312764388 0.72193609260491143 0.20058784937230756 ;
 createNode mesh -n "pSphereShape1" -p "pSphere1";
 	rename -uid "E8E0F969-433E-604D-4764-C49EF6A55136";
 	setAttr -k off ".v";
@@ -247,6 +252,8 @@ createNode transform -n "pCube7";
 	setAttr ".sp" -type "double3" -0.094508454203605652 4.8319091796875 0.70488893985748291 ;
 createNode transform -n "polySurface1" -p "pCube7";
 	rename -uid "2AA07790-4DDA-06CD-9E1A-0A9A22F679B3";
+	setAttr ".rp" -type "double3" -5.0225101241443788 4.6050683235287018 0.35596924617575709 ;
+	setAttr ".sp" -type "double3" -5.0225101241443788 4.6050683235287018 0.35596924617575709 ;
 createNode mesh -n "polySurfaceShape1" -p "polySurface1";
 	rename -uid "47E83B1B-4BD6-9D4E-6C36-40B2CD7FC915";
 	setAttr -k off ".v";
@@ -326,8 +333,8 @@ createNode mesh -n "pCube7Shape" -p "transform7";
 createNode transform -n "polySurface3";
 	rename -uid "20B29821-41B3-C95C-BEB5-97B6870533D6";
 	setAttr ".t" -type "double3" -2.2204460492503131e-016 0 -1 ;
-	setAttr ".rp" -type "double3" -0.10102363675832748 4.5423717498779297 1.2853624820709229 ;
-	setAttr ".sp" -type "double3" -0.10102363675832748 4.5423717498779297 1.2853624820709229 ;
+	setAttr ".rp" -type "double3" -5.0225101241443788 4.6050683235287018 1.3559692461757571 ;
+	setAttr ".sp" -type "double3" -5.0225101241443788 4.6050683235287018 1.3559692461757571 ;
 createNode mesh -n "polySurface3Shape" -p "|polySurface3";
 	rename -uid "7867A2D2-4F55-A642-E869-3684B3311A33";
 	setAttr -k off ".v";
