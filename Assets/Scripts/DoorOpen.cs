@@ -25,11 +25,27 @@ public class DoorOpen : MonoBehaviour {
         if (Physics.Raycast(ray, out rayHit, 5f, keyMask)) //stores data in rayHit if a door is within 5 units of it
         {
             door = rayHit.collider; //stores the key's collider in the collider variable
-            if (Input.GetMouseButtonDown(0) && GameManager.hasKeyOne == true) //checks to see input from mouse button 1 and if has a key
+            //If they click and they have the right key for the right door, it rotates 90 degrees and then the collider gets removed
+            // so you can't keep rotating it. I either need to add another that won't trigger the rotation or find a better way. 
+            if (Input.GetMouseButtonDown(0)) 
             {
-                Debug.Log("it works");
-                door.gameObject.transform.Rotate(0f, -90f, 0f);
-               
+                if (door.gameObject.tag == "Door1" && GameManager.hasKeyOne == true)
+                {
+                    door.gameObject.transform.Rotate(0f, -90f, 0f);
+                    Destroy(door.gameObject.GetComponent<MeshCollider>());
+                }
+                if (door.gameObject.tag == "Door2" && GameManager.hasKeyTwo == true)
+                {
+                    door.gameObject.transform.Rotate(0f, -90f, 0f);
+                    Destroy(door.gameObject.GetComponent<MeshCollider>());
+                }
+                if (door.gameObject.tag == "Door3" && GameManager.hasKeyThree == true)
+                {
+                    door.gameObject.transform.Rotate(0f, -90f, 0f);
+                    Destroy(door.gameObject.GetComponent<MeshCollider>());
+                    Debug.Log("Used Key3");
+                }
+
             }
 
 

@@ -5,8 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public static bool hasKeyOne;
-	// Use this for initialization
-	void Start () {
+    public static bool hasKeyTwo;
+    public static bool hasKeyThree;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

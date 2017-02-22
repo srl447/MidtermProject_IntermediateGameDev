@@ -27,8 +27,23 @@ public class CollectKey : MonoBehaviour
             key = rayHit.collider; //stores the key's collider in the collider variable
             if (Input.GetMouseButtonDown (0)) //checks to see input from mouse button 1
             {
+
+                //Checks what keys have been picked up and assigns the variable for holding that key to true
+                if(key.gameObject.tag == "Key1")
+                {
+                    GameManager.hasKeyOne = true; 
+                }
+                if (key.gameObject.tag == "Key2")
+                {
+                    GameManager.hasKeyTwo = true; 
+                }
+                if (key.gameObject.tag == "Key3")
+                {
+                    GameManager.hasKeyThree = true;
+                    Debug.Log("Got Key3");
+                }
+
                 Destroy(key.gameObject); //removes the key from the world
-                GameManager.hasKeyOne = true; //tells the game key one has been picked up
             }
             
                

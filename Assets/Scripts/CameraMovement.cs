@@ -17,9 +17,9 @@ public class CameraMovement : MonoBehaviour
 	void Update ()
     {
         Cursor.visible = false; //turns off the mouse visibility
-        //Cursor.lockState = CursorLockMode.Locked; not sure what this line would do, probably keeps mouse cursor in place?
-        //float mouseX = Input.GetAxis("Mouse X"); //grabs horizontal mouse inputs
-        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * cameraSpeed;//grabs vertical mouseinputs
+        Cursor.lockState = CursorLockMode.Locked; //keeps mouse cursor in place              
+                                
+        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * cameraSpeed; //grabs vertical mouseinputs
         verticalTurn -= mouseY; //assigns value to verticalTurn
         //horizontalTurn = mouseX * Time.deltaTime * cameraSpeed; //assigns value to verticalTurn
         verticalTurn = Mathf.Clamp(verticalTurn, -80f, 80f);
