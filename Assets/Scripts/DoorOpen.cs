@@ -6,7 +6,7 @@ public class DoorOpen : MonoBehaviour {
 
 
     Collider door; //Collider to assign to doors later
-    public LayerMask keyMask; // Allows for the ray to only detect keys
+    public LayerMask doorMask; // Allows for the ray to only detect keys
     // Use this for initialization
     void Start()
     {
@@ -22,33 +22,43 @@ public class DoorOpen : MonoBehaviour {
 
         Debug.DrawRay(ray.origin, ray.direction * 5f, Color.yellow); // draws raycast in the editor
 
-        if (Physics.Raycast(ray, out rayHit, 5f, keyMask)) //stores data in rayHit if a door is within 5 units of it
+        if (Physics.Raycast(ray, out rayHit, 5f, doorMask)) //stores data in rayHit if a door is within 5 units of it
         {
             door = rayHit.collider; //stores the key's collider in the collider variable
+
+            // Checks to see if you have matching key to the door you look at to see if text should be displayed 
+            if ((door.gameObject.tag == "Door1" && GameManager.hasKeyOne == true) || (door.gameObject.tag == "Door2" && GameManager.hasKeyTwo == true) || (door.gameObject.tag == "Door3" && GameManager.hasKeyThree == true))
+            {
+                KeyText.displayDoorText = true; //Changes a variable in the text script to tell it to turn text on
+            }
             //If they click and they have the right key for the right door, it rotates 90 degrees and then the collider gets removed
             // so you can't keep rotating it. I either need to add another that won't trigger the rotation or find a better way. 
             if (Input.GetMouseButtonDown(0)) 
             {
                 if (door.gameObject.tag == "Door1" && GameManager.hasKeyOne == true)
                 {
-                    door.gameObject.transform.Rotate(0f, -90f, 0f);
+                    door.gameObject.transform.Rotate(0f, -1f, 0f);
                     Destroy(door.gameObject.GetComponent<MeshCollider>());
+                    KeyText.displayDoorText = false;//Changes a variable in the text script to tell it to turn text off
                 }
                 if (door.gameObject.tag == "Door2" && GameManager.hasKeyTwo == true)
                 {
                     door.gameObject.transform.Rotate(0f, -90f, 0f);
                     Destroy(door.gameObject.GetComponent<MeshCollider>());
+                    KeyText.displayDoorText = false;//Changes a variable in the text script to tell it to turn text off
                 }
                 if (door.gameObject.tag == "Door3" && GameManager.hasKeyThree == true)
                 {
                     door.gameObject.transform.Rotate(0f, -90f, 0f);
                     Destroy(door.gameObject.GetComponent<MeshCollider>());
-                    Debug.Log("Used Key3");
+                    KeyText.displayDoorText = false;//Changes a variable in the text script to tell it to turn text off
                 }
 
             }
-
-
+        }
+        else
+        {
+            KeyText.displayDoorText = false; //Changes a variable in the text script to tell it to turn text off
         }
     }
 }

@@ -24,6 +24,7 @@ public class CollectKey : MonoBehaviour
 
         if (Physics.Raycast(ray, out rayHit, 5f, keyMask)) //stores data in rayHit if a key is within 5 units of it
         {
+            KeyText.displayKeyText = true; //Changes a variable in the text script to tell it to turn text on
             key = rayHit.collider; //stores the key's collider in the collider variable
             if (Input.GetMouseButtonDown (0)) //checks to see input from mouse button 1
             {
@@ -40,13 +41,16 @@ public class CollectKey : MonoBehaviour
                 if (key.gameObject.tag == "Key3")
                 {
                     GameManager.hasKeyThree = true;
-                    Debug.Log("Got Key3");
+                    
                 }
 
                 Destroy(key.gameObject); //removes the key from the world
-            }
-            
-               
+                KeyText.displayKeyText = false;//Changes a variable in the text script to tell it to turn text off
+            }    
+        }
+        else
+        {
+            KeyText.displayKeyText = false; //Changes a variable in the text script to tell it to turn text off
         }
     }
 }

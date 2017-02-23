@@ -38,6 +38,11 @@ public class Movement : MonoBehaviour
             relativeHorizontal = horizontal * Mathf.Sin(angle) + vertical * Mathf.Cos(angle);
             relativeVertical = - horizontal * Mathf.Cos(angle) + vertical * Mathf.Sin(angle);
         }
+        if (vertical != 0 && horizontal != 0) //stops speed from doubling when moving diaganolly
+        {
+            relativeHorizontal = relativeHorizontal * .75f;
+            relativeVertical = relativeVertical * .75f;
+        }
         movementDirection = new Vector3(relativeHorizontal, -1f, relativeVertical); //assigns inputs in a vector
 
         characterControl.Move(movementDirection); //uses the character controller to move
