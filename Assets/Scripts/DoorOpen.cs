@@ -37,7 +37,7 @@ public class DoorOpen : MonoBehaviour {
             {
                 if (door.gameObject.tag == "Door1" && GameManager.hasKeyOne == true)
                 {
-                    door.gameObject.transform.Rotate(0f, -1f, 0f);
+                    door.gameObject.transform.Rotate(0f, -90f, 0f);
                     Destroy(door.gameObject.GetComponent<MeshCollider>());
                     KeyText.displayDoorText = false;//Changes a variable in the text script to tell it to turn text off
                 }
