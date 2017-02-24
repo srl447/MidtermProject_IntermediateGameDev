@@ -7,12 +7,19 @@ public class DoorOpen : MonoBehaviour {
 
     Collider door; //Collider to assign to doors later
     public LayerMask doorMask; // Allows for the ray to only detect keys
-    // Use this for initialization
-    void Start()
+    bool clicked;
+
+    void Update()
     {
-
+        if (Input.GetMouseButtonDown(0)) //checks to see input from mouse button 1
+        {
+            clicked = true; //stores the input here to use in Fixed Update
+        }
+        else
+        {
+            clicked = false;
+        }
     }
-
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -33,7 +40,7 @@ public class DoorOpen : MonoBehaviour {
             }
             //If they click and they have the right key for the right door, it rotates 90 degrees and then the collider gets removed
             // so you can't keep rotating it. I either need to add another that won't trigger the rotation or find a better way. 
-            if (Input.GetMouseButtonDown(0)) 
+            if (clicked) //checks to see input from mouse button 1 from Update
             {
                 if (door.gameObject.tag == "Door1" && GameManager.hasKeyOne == true)
                 {
