@@ -17,7 +17,7 @@ public class CollectKey : MonoBehaviour
 	void Update ()
     {
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward); // creates a ray
-
+        Debug.Log(Camera.main.transform.position);
         RaycastHit rayHit = new RaycastHit(); //creates variable to store ray data
 
         Debug.DrawRay(ray.origin, ray.direction * 5f, Color.yellow); // draws raycast in the editor
