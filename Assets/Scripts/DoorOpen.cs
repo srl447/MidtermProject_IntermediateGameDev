@@ -14,7 +14,7 @@ public class DoorOpen : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward); // creates a ray
 
