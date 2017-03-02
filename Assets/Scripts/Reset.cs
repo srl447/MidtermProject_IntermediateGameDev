@@ -13,7 +13,7 @@ public class Reset : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             GameManager.hasKeyOne = false;

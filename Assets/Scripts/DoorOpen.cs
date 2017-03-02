@@ -44,21 +44,15 @@ public class DoorOpen : MonoBehaviour {
             {
                 if (door.gameObject.tag == "Door1" && GameManager.hasKeyOne == true)
                 {
-                    door.gameObject.transform.Rotate(0f, -90f, 0f);
-                    Destroy(door.gameObject.GetComponent<MeshCollider>());
-                    KeyText.displayDoorText = false;//Changes a variable in the text script to tell it to turn text off
+                    DoorSwing(); //calls DoorSwing function
                 }
                 if (door.gameObject.tag == "Door2" && GameManager.hasKeyTwo == true)
                 {
-                    door.gameObject.transform.Rotate(0f, -90f, 0f);
-                    Destroy(door.gameObject.GetComponent<MeshCollider>());
-                    KeyText.displayDoorText = false;//Changes a variable in the text script to tell it to turn text off
+                    DoorSwing();
                 }
                 if (door.gameObject.tag == "Door3" && GameManager.hasKeyThree == true)
                 {
-                    door.gameObject.transform.Rotate(0f, -90f, 0f);
-                    Destroy(door.gameObject.GetComponent<MeshCollider>());
-                    KeyText.displayDoorText = false;//Changes a variable in the text script to tell it to turn text off
+                    DoorSwing();
                 }
 
             }
@@ -67,5 +61,12 @@ public class DoorOpen : MonoBehaviour {
         {
             KeyText.displayDoorText = false; //Changes a variable in the text script to tell it to turn text off
         }
+    }
+
+    void DoorSwing()
+    {
+        door.gameObject.transform.Rotate(0f, -90f, 0f); //rotates the door
+        Destroy(door.gameObject.GetComponent<MeshCollider>()); //removes the collider so the function can't be run on the same door twice
+        KeyText.displayDoorText = false;//Changes a variable in the text script to tell it to turn text off
     }
 }
